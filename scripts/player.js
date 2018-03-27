@@ -1,3 +1,10 @@
+{
+  $('button#play-pause').on('click', function() {
+     player.playPause();
+     $(this).attr('playState', player.playState);
+   });
+}
+
 class Player {
   constructor () {
     this.currentlyPlaying = album.songs[0];
@@ -26,6 +33,8 @@ class Player {
       this.playState = 'stopped';
       this.soundObject = new buzz.sound(this.currentlyPlaying.soundFileUrl);
     }
+
+      // Play song at certain volume and have no sound on pause
     if (this.playState === 'paused' || this.playState === 'stopped') {
       this.soundObject.setVolume( this.volume );
       this.soundObject.play();
@@ -37,16 +46,16 @@ class Player {
       this.currentlyPlaying.element.removeClass('playing').addClass('paused');
     }
   }
-
+    // Show how much of the song is left
   skipTo (percent) {
     if (this.playState !== 'playing') { return }
     this.soundObject.setTime( (percent / 100) * this.soundObject.getDuration() );
   }
-
+    // Determine the volume
   setVolume (percent) {
     this.volume = percent;
     this.soundObject.setVolume(percent);
   }
 }
-
+    // Go to a new player
 const player = new Player();
