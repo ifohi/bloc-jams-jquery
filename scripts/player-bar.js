@@ -29,4 +29,9 @@ setInterval( () => {
   $('#time-control .current-time').text( currentTime );
   $('#time-control input').val(percent);
 }, 1000);
+
+// event handler that calls player.setVolume and sets volume to the input's target value
+  $('#volume-control input').on('input', function(event) {
+          player.setVolume(event.target.value);
+      });
 }
