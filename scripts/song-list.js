@@ -16,6 +16,8 @@
 
     song.element.on('click', event => {
       player.playPause(song);
+
+      // Changes the play/pause button state
       $('button#play-pause').attr('playState', player.playState);
     });
 
