@@ -1,10 +1,3 @@
-{
-  $('button#play-pause').on('click', function() {
-     player.playPause();
-     $(this).attr('playState', player.playState);
-   });
-}
-
 class Player {
   constructor () {
     this.currentlyPlaying = album.songs[0];
